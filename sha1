@@ -1,0 +1,7 @@
+Go to your VS project
+Open the terminal
+cd android
+./gradlew signingRepor
+then paste this and see sha1 : 
+keytool -list -v \
+-alias androiddebugkey -keystore %USERPROFILE%\.android\debug.keystore
