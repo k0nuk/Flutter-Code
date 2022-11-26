@@ -1,34 +1,4 @@
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   MySnackBar(message, context) {
     return ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(message)));
   }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(actions: [
-          Builder(
-            builder: (context) {
-              return IconButton(
-                  onPressed: () {
-                    MySnackBar('I am SnackBar', context);
-                  },
-                  icon: Icon(Icons.search));
-            },
-          ),
-        ]),
-      ),
-    );
-  }
-}
