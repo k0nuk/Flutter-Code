@@ -1,0 +1,76 @@
+import 'package:flutter/material.dart';
+
+void main(){
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomeActivity(),
+    );
+  }
+}
+
+class HomeActivity extends StatelessWidget {
+HomeActivity({Key? key}) : super(key: key);
+
+  var MyItems = [
+    {"img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQzMBw807M-6phRAa5zt3ecMl6ilakOZZ84TPWYOJs&s", "title":"flutter image"},
+    {"img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQzMBw807M-6phRAa5zt3ecMl6ilakOZZ84TPWYOJs&s", "title":"Google Flutter"},
+    {"img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQzMBw807M-6phRAa5zt3ecMl6ilakOZZ84TPWYOJs&s", "title":"Flutter app"},
+    {"img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQzMBw807M-6phRAa5zt3ecMl6ilakOZZ84TPWYOJs&s", "title":"flutter developer"},
+    {"img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQzMBw807M-6phRAa5zt3ecMl6ilakOZZ84TPWYOJs&s", "title":"flutter client"},
+    {"img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQzMBw807M-6phRAa5zt3ecMl6ilakOZZ84TPWYOJs&s", "title":"flutter image"},
+    {"img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQzMBw807M-6phRAa5zt3ecMl6ilakOZZ84TPWYOJs&s", "title":"Google Flutter"},
+    {"img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQzMBw807M-6phRAa5zt3ecMl6ilakOZZ84TPWYOJs&s", "title":"Flutter app"},
+    {"img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQzMBw807M-6phRAa5zt3ecMl6ilakOZZ84TPWYOJs&s", "title":"flutter developer"},
+    {"img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQzMBw807M-6phRAa5zt3ecMl6ilakOZZ84TPWYOJs&s", "title":"flutter client"},
+
+  ];
+
+  @override
+
+  MySnackBar(context, msg){
+    return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
+  }
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('My App'),
+      ),
+      body: GridView.builder(
+        scrollDirection: Axis.horizontal,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 1,
+          childAspectRatio: 1,
+          ),
+        itemCount: MyItems.length,
+        itemBuilder: (context,index){
+          return GestureDetector(
+            onTap: (){
+              MySnackBar(context, MyItems[index]["title"]);
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(),),
+              margin: EdgeInsets.all(10),
+              
+              width: double.infinity,
+              height: 200,
+             
+               child: Image.network(MyItems[index]["img"]!, fit: BoxFit.fill),
+              
+            ),
+          );
+        }
+        )
+    );
+  }
+}
